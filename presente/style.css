@@ -1,0 +1,401 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #2a1f5c 0%, #140f2d 50%, #0a0618 100%);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ESTRELAS */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1.5px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* Container que agrupa o Vídeo e o Sonic */
+.linha-especial {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Empurra um para cada ponta */
+    align-items: flex-end; /* Alinha por baixo para ficarem na mesma base */
+    gap: 20px;
+    margin-top: 30px;
+    padding: 0 10px; /* Pequeno respiro nas laterais */
+}
+
+/* Força o card do vídeo a ter o mesmo tamanho dos outros */
+.linha-especial .card {
+    width: 250px; /* Ajuste para o mesmo valor que você usou nos outros cards */
+    flex-shrink: 0; /* Impede que o card esmague */
+    margin: 0;
+}
+
+/* Ajusta o tamanho do vídeo dentro do card */
+.linha-especial video {
+    width: 100%;
+    height: 180px; /* Mesma altura das fotos da galeria */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Container que mantém o vídeo na esquerda e o sonic na direita */
+.linha-especial {
+    display: flex;
+    width: 100%;
+    justify-content: space-between; /* Empurra os itens para as pontas */
+    align-items: flex-start;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+/* Força o card do Sonic a ter o mesmo estilo dos outros */
+.sonico .card {
+    width: 200px; /* Tamanho do card do Sonic */
+    background: rgba(255, 255, 255, 0.08); /* Fundo igual aos outros cards */
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0; /* Remove margens que podem cortar o elemento */
+}
+
+/* Garante que o GIF ocupe o espaço interno do card sem sobrar */
+.sonico img {
+    width: 100%;
+    height: auto;
+    max-height: 150px; /* Ajuste a altura máxima do Sonic aqui */
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* Container pai para os gatos */
+.decoracao-gatos {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Espaço reservado para os gatos */
+    margin-top: 50px;
+    z-index: 1;
+}
+
+/* Estilo comum para todos os gatinhos */
+.gato {
+    position: absolute;
+    width: 120px; /* Tamanho do gatinho */
+    background: white;
+    padding: 5px 5px 15px 5px; /* Estilo foto Polaroid */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.gato img {
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+
+.gato:hover {
+    transform: scale(1.1) !important;
+    z-index: 100;
+}
+
+/* Posições e inclinações aleatórias */
+.gato-1 { top: 10px; left: 10%; transform: rotate(-15deg); }
+.gato-2 { top: 80px; left: 25%; transform: rotate(10deg); }
+.gato-3 { top: -350px; left: 45%; transform: rotate(-5deg); }
+.gato-4 { top: 60px; left: 70%; transform: rotate(12deg); }
+.gato-5 { top: 20px; left: 85%; transform: rotate(-10deg); }
+
+/* Ajuste para não bugar no celular */
+@media (max-width: 768px) {
+    .decoracao-gatos { height: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .gato { position: relative; top: 0 !important; left: 0 !important; }
+}
+
+
+/* Ajuste para telas de celular */
+@media (max-width: 768px) {
+    .linha-especial {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+}
+/* INTRO */
+.intro {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(10, 6, 24, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
+    transition: 0.8s;
+}
+
+.intro-box h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.intro button {
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: none;
+    background: #ff4e88;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 78, 136, 0.5);
+    transition: 0.3s;
+}
+
+.intro button:hover {
+    transform: scale(1.1);
+}
+
+/* CONTEÚDO */
+.conteudo {
+    display: none;
+    padding: 60px 20px;
+}
+
+.titulo-principal {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #ff4e88;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.card {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* ENVELOPE */
+.container-envelope {
+    margin: 150px auto 100px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.envelop-wrapper {
+    position: relative;
+    cursor: url('https://cdn-icons-png.flaticon.com/32/2169/2169162.png'), pointer;
+}
+
+.envelop {
+    width: 350px;
+    height: 230px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.envelop__back-paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #c6a376;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.envelop__content {
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    bottom: 10px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2;
+    opacity: 0;
+    transition: 1s ease;
+}
+
+.envelop__front-paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #b9966b;
+    clip-path: polygon(0 0, 50% 65%, 100% 0, 100% 100%, 0 100%);
+    z-index: 3;
+    border-radius: 10px;
+}
+
+.envelop__up-paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #a3835d;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 80%);
+    z-index: 4;
+    transform-origin: top;
+    transition: 0.8s;
+}
+
+/* FITA DE CORAÇÕES */
+.envelop__sticker {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    top: 40%;
+    background: white;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px dashed #ff4e88;
+    border-bottom: 1px dashed #ff4e88;
+    overflow: hidden;
+}
+
+.fita-decorativa {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://cdn-icons-png.flaticon.com/32/2107/2107845.png');
+    background-repeat: repeat-x;
+    background-size: 25px;
+    background-position: center;
+    opacity: 0.8;
+}
+
+.coracao-central {
+    position: absolute;
+    font-size: 20px;
+}
+
+/* ANIMAÇÃO ABERTA */
+.envelop.open .envelop__up-paper {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.envelop.open .envelop__content {
+    opacity: 1;
+    transform: translateY(-110%);
+}
+
+.envelop__sticker.removed {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.note {
+    color: #333;
+    background: #fff0f3;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.coracao {
+    position: fixed;
+    top: 100vh;
+    animation: subir 5s linear forwards;
+    z-index: 999;
+}
+
+/* Container para centralizar o botão e dar espaçamento */
+.container-cutePage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Estilização do Link (que parece um botão) */
+.bottom-cutePage {
+    display: inline-block;
+    padding: 18px 40px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Gradiente que combina com o tema rosa/roxo */
+    background: linear-gradient(45deg, #ff4e88, #ff1e6c, #8a2be2);
+    background-size: 200% auto;
+    
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(255, 78, 136, 0.4);
+    
+    transition: all 0.4s ease;
+    cursor: pointer;
+    animation: flutuar 3s ease-in-out infinite;
+}
+
+/* Efeito ao passar o mouse */
+.bottom-cutePage:hover {
+    transform: scale(1.1);
+    background-position: right center; /* Move o gradiente */
+    box-shadow: 0 0 40px rgba(255, 78, 136, 0.8), 0 0 60px rgba(138, 43, 226, 0.4);
+    border-color: white;
+}
+
+/* Efeito ao clicar */
+.bottom-cutePage:active {
+    transform: scale(0.95);
+}
+
+/* Animação suave de flutuar (sobe e desce) */
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes subir {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+.final { margin-top: 50px; padding-bottom: 50px; }

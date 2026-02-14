@@ -1,0 +1,233 @@
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS E FUNDO
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #2a1f5c 0%, #140f2d 50%, #0a0618 100%);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1.5px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.container-galeria {
+    position: relative;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.titulo-galeria {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #ff4e88, 0 0 30px #ff1e6c;
+    animation: pulsar 1s infinite alternate;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* =========================================
+   2. GRID DE FOTOS E CARDS (POLAROIDS)
+   ========================================= */
+.fotos-grid {
+    position: relative;
+    width: 100%;
+    height: 900px; /* Altura aumentada para caber as 3 linhas de fotos */
+    margin-bottom: 80px;
+}
+
+.foto-card {
+    position: absolute;
+    width: 180px;
+    background: white;
+    padding: 8px 8px 30px 8px;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0.1s ease;
+    cursor: pointer;
+}
+
+.foto-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.foto-card p {
+    color: #333;
+    font-size: 0.85rem;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.foto-card:hover {
+    transform: scale(1.15) rotate(0deg) !important;
+    box-shadow: 0 15px 30px rgba(255, 78, 136, 0.7);
+    z-index: 500;
+}
+
+/* =========================================
+   3. POSICIONAMENTO FIXO (15 FOTOS)
+   ========================================= */
+
+/* Linha 1 */
+.foto-1 { top: 20px; left: 5%; transform: rotate(-10deg); }
+.foto-2 { top: 60px; left: 25%; transform: rotate(8deg); }
+.foto-3 { top: 10px; left: 45%; transform: rotate(-5deg); }
+.foto-4 { top: 10px; left: 65%; transform: rotate(12deg); }
+.foto-5 { top: 30px; left: 85%; transform: rotate(-15deg); }
+
+/* Linha 2 */
+.foto-6 { top: 300px; left: 10%; transform: rotate(5deg); }
+.foto-7 { top: 340px; left: 30%; transform: rotate(-8deg); }
+.foto-8 { top: 280px; left: 50%; transform: rotate(10deg); }
+.foto-9 { top: 370px; left: 72%; transform: rotate(-12deg); }
+.foto-10 { top: 310px; left: 93%; transform: rotate(7deg); }
+
+/* Linha 3 */
+.foto-11 { top: 580px; left: 5%; transform: rotate(-6deg); }
+.foto-12 { top: 630px; left: 28%; transform: rotate(9deg); }
+.foto-13 { top: 570px; left: 52%; transform: rotate(-11deg); }
+.foto-14 { top: 650px; left: 75%; transform: rotate(6deg); }
+.foto-15 { top: 590px; left: 94%; transform: rotate(-7deg); }
+
+/* =========================================
+   4. MODAL DE ZOOM (AUMENTAR FOTO)
+   ========================================= */
+.zoom-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: zoom-out;
+}
+
+.foto-ampliada {
+    max-width: 85%;
+    max-height: 75%;
+    border: 5px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(255, 78, 136, 0.8);
+    animation: zoomSuave 0.3s ease-out;
+}
+
+#legenda-ampliada {
+    margin-top: 25px;
+    font-size: 1.8rem;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 0 10px #ff4e88;
+}
+
+.fechar-zoom {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+/* =========================================
+   5. BOTÃO FINAL
+   ========================================= */
+.container-history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0 120px;
+    width: 100%;
+}
+
+.bottom-history {
+    display: inline-block;
+    padding: 20px 45px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #ff4e88, #8a2be2);
+    background-size: 200% auto;
+    border-radius: 50px;
+    box-shadow: 0 0 25px rgba(255, 78, 136, 0.5);
+    transition: 0.4s;
+    animation: flutuar 3s ease-in-out infinite;
+}
+
+.bottom-history:hover {
+    transform: scale(1.1);
+    background-position: right center;
+    box-shadow: 0 0 40px #ff4e88;
+}
+
+/* =========================================
+   6. ANIMAÇÕES
+   ========================================= */
+@keyframes pulsar {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+@keyframes zoomSuave {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* =========================================
+   7. RESPONSIVIDADE (CELULAR)
+   ========================================= */
+@media (max-width: 768px) {
+    .fotos-grid {
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    .foto-card {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: rotate(0deg) !important;
+        width: 145px;
+    }
+    .titulo-galeria { font-size: 2rem; }
+}
